@@ -7,7 +7,7 @@ namespace DevPrep.Models
 {
     public class SoftwareLanguage
     {
-        public int Id { get; set; }
-        public int Name { get; set; }
+        public int id { get; set; }
+        public string Name { get; set; }
     }
 }

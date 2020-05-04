@@ -7,9 +7,11 @@ namespace DevPrep.Models
 {
     public class Description
     {
-        public  int Id { get; set; }
+        public  int id { get; set; }
         public int ConceptId { get; set; }
-        public int UserId { get; set; }
+        public Concept Concept { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         public string Paragraph { get; set; }
     }
 }

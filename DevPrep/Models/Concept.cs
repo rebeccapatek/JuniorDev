@@ -8,9 +8,11 @@ namespace DevPrep.Models
     public class Concept
 
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Name { get; set; }
         public int SoftwareLanguageId { get; set; }
-        public int UserId { get; set; }
+        public SoftwareLanguage SoftwareLanguage { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }
