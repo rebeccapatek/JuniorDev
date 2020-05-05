@@ -7,7 +7,7 @@ namespace DevPrep.Models.ViewModels
 {
     public class ConceptViewModel
     {
-        public List<ConceptWithDescriptionAndLink> Concepts { get; set; }
+        public List<ConceptWithDescriptionAndLink> ConceptsWithStuff { get; set; }
 
     }
 }
