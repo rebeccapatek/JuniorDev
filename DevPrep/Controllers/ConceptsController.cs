@@ -2,17 +2,59 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevPrep.Data;
+using DevPrep.Models;
+using DevPrep.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DevPrep.Controllers
 {
-    public class ConceptController : Controller
+    public class ConceptsController : Controller
     {
-        // GET: Concept
-        public ActionResult Index()
+            
+        private readonly ApplicationDbContext _context;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ConceptsController(ApplicationDbContext ctx, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
-            return View();
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _context = ctx;
+        }
+        // GET: Concept
+        public async Task<ActionResult> Index(int? id)
+
+        //{
+        //    var concepts = from c in _context.Concepts
+        //                  .Include(c => c.SoftwareLanguage)
+        //                   select c;
+        //    if (id != null)
+        //    {
+        //        concepts = concepts.Where(c => c.SoftwareLanguageId == id);
+        //    }
+        //    return View(await concepts.ToListAsync());
+        //}
+        {
+            var model = new ConceptViewModel();
+
+
+            model.ConceptsWithStuff = await _context
+                .Concepts
+                .Where(c => c.SoftwareLanguageId == id)
+                .Select(c => new ConceptWithDescriptionAndLink()
+                {
+                    ConceptId = c.id,
+                    ConceptName = c.Name,
+                    SoftwareLanguageId = id,
+                    UsefulLinks = c.UsefulLinks.ToList(),
+                    Descriptions = c.Descriptions.ToList()
+                }).ToListAsync();
+
+            return View(model);
         }
 
         // GET: Concept/Details/5
