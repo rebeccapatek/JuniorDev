@@ -14,5 +14,8 @@ namespace DevPrep.Models
         public SoftwareLanguage SoftwareLanguage { get; set; }
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public virtual ICollection<Description> Descriptions { get; set; }
+        public virtual ICollection<UsefulLink> UsefulLinks { get; set; }
+
     }
 }
