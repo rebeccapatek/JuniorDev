@@ -35,19 +35,21 @@
                             <li> @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> </li>
                         }
                     </ol>
-
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })
+                    </div>
                 </td>
             </tr>
-        }
+
 
         <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-
+        }
     </tbody>
+
 </table>
 

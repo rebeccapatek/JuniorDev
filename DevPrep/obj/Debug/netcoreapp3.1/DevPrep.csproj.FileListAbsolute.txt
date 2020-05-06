@@ -161,3 +161,4 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.cspr
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\SoftwareLanguage\Index.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Index.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Create.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Edit.cshtml.g.cs

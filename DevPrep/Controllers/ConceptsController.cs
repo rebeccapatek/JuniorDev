@@ -116,9 +116,18 @@ namespace DevPrep.Controllers
         }
 
         // GET: Concept/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var viewModel = new EditConceptViewModel();
+
+            var user = await GetCurrentUserAsync();
+            var descriptions = await _context
+                .Descriptions.Where(d => d.ConceptId == id).ToListAsync();
+            var concept = await _context.Concepts.FindAsync(id);
+            viewModel.ConceptName = concept.Name;
+            viewModel.Descriptions = descriptions;
+
+            return View(viewModel);
         }
 
         // POST: Concept/Edit/5
