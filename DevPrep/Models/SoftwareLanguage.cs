@@ -9,5 +9,7 @@ namespace DevPrep.Models
     {
         public int id { get; set; }
         public string Name { get; set; }
+        public virtual ICollection<Concept> Concepts { get; set; }
+
     }
 }
