@@ -5,6 +5,7 @@
 }
 
 <h1>Technologies</h1>
+<h3>Choose a Technology you'd like to review</h3>
 
 
 <table class="table">
@@ -22,12 +23,7 @@
         <tr>
           
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-               
-                @Html.ActionLink("Details", "Details", new {id=item.id}) |
-                
+                @Html.ActionLink(item.Name, "Index", "Concepts", new { id = item.id }, new { area = "" })
             </td>
         </tr>
 }

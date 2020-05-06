@@ -20,32 +20,34 @@
         @foreach (var item in Model.ConceptsWithStuff)
         {
 
-                <tr>
-                    <td>@(item.ConceptName)
-                            <ol>
-                            @foreach (var des in item.Descriptions)
-                            {
-                                <li> @des.Paragraph </li>
-                            }
-                            </ol>
-                            <ol>
-                            @foreach (var link in item.UsefulLinks)
-                            {
-                                <li> @link.Title @link.Link </li>
-                            }
-                        </ol>
-                        
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @(item.ConceptName)
+                    <ol>
+                        @foreach (var des in item.Descriptions)
+                        {
+                            <li> @des.Paragraph </li>
+                        }
+                    </ol>
+                    <ol>
+                        @foreach (var link in item.UsefulLinks)
+                        {
+                            <li> @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> </li>
+                        }
+                    </ol>
+
+                </td>
+            </tr>
         }
 
-                <tr>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-                </tr>
-             
-            </tbody>
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+
+    </tbody>
 </table>
+
