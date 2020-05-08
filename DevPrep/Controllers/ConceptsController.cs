@@ -165,72 +165,40 @@ namespace DevPrep.Controllers
             }
         }
 
-        // POST: Concept/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Edit(int id, EditConceptViewModel editConceptViewModel)
-        //{
-        //try
-        //{
-        //    var viewModel = new EditConceptViewModel();
-        //    var user = await GetCurrentUserAsync();
-        //    var concept = _context.Concepts.FirstOrDefault(concept => concept.id == id);
-        //    var descriptions = await _context
-        //   .Descriptions.Where(d => d.ConceptId == id).ToListAsync();
-        //    var links = await _context
-        //        .UsefulLinks.Where(l => l.ConceptId == id).ToListAsync();
-        //    foreach (Description desc in descriptions)
-        //    {
-        //        Description Existed_Desc = editConceptViewModel.Descriptions.Find(desc.id);
-        //        Existed_Desc.Paragraph = desc.Paragraph;
-        //        Existed_Desc.ConceptId = id;
-        //        Existed_Desc.ApplicationUserId = user.Id;
 
-        //        _context.Descriptions.Update(desc);
-        //        await _context.SaveChangesAsync();
-
-        //    }
-        //    foreach (UsefulLink li in links)
-        //    {
-        //        UsefulLink Existed_li = editConceptViewModel.Links.Find(li.id);
-        //        Existed_li.Title = li.Title;
-        //        Existed_li.Link = li.Link;
-        //        Existed_li.ConceptId = id;
-        //        Existed_li.ApplicationUserId = user.Id;
-        //        _context.UsefulLinks.Update(li);?
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    viewModel.ConceptName = concept.Name;
-        //    viewModel.Descriptions = descriptions;
-        //    viewModel.Links = links;
-        //    _context.Concepts.Update(concept);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
         // GET: Concept/Delete/5
-        public ActionResult Delete(int id)
+
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var concept = await _context.Concepts
+                .Include(c => c.Descriptions)
+                .Include(c => c.UsefulLinks)
+                .FirstOrDefaultAsync(c => c.id == id);
+
+            return View(concept);
         }
 
         // POST: Concept/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+
+        public async Task<ActionResult> Delete(int id, Concept concept)
         {
             try
             {
-                // TODO: Add delete logic here
+                var usefulLinks = await _context.UsefulLinks.Where(ul => ul.ConceptId == id).ToListAsync();
+                var softwareLangId = concept.SoftwareLanguageId;
+                _context.UsefulLinks.RemoveRange(usefulLinks);
 
-                return RedirectToAction(nameof(Index));
+
+
+                _context.Concepts.Remove(concept);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index), new { id = softwareLangId });
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }

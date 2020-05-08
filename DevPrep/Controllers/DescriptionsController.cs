@@ -104,23 +104,32 @@ namespace DevPrep.Controllers
         }
 
         // GET: Descriptions/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var description = await _context.Descriptions.FirstOrDefaultAsync(item => item.id == id);
+            return View(description);
         }
 
         // POST: Descriptions/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, Description description)
         {
             try
             {
+                var matchingDescription = await _context.Descriptions
+                    .Include(md => md.Concept)
+                    .FirstOrDefaultAsync(md => md.id == id);
+
+                var matchingSoftwareLangId = matchingDescription.Concept.SoftwareLanguageId;
+                _context.Descriptions.Remove(matchingDescription);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index), "Concepts", new { id = matchingSoftwareLangId } );
                 // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }

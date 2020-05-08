@@ -164,3 +164,6 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.genr
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.csprojAssemblyReference.cache
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\UsefulLinks\Create.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Descriptions\Create.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Delete.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Descriptions\Delete.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\UsefulLinks\Delete.cshtml.g.cs

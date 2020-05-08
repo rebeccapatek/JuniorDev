@@ -27,16 +27,21 @@
                         @foreach (var des in item.Descriptions)
                         {
                             <li> @des.Paragraph </li>
+                            <li>@Html.ActionLink("Delete", "Delete", "Descriptions", new { id = des.id }, new { area = "" })</li>
+
                         }
                         <li> @Html.ActionLink("Add A Paragraph", "Create", "Descriptions", new { id = item.ConceptId }, new { area = "" })</li>
+
 
                     </ol>
                     <ul>
                         @foreach (var link in item.UsefulLinks)
                         {
                             <li> @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> </li>
+                            <li>@Html.ActionLink("Delete", "Delete", "UsefulLinks", new { id = link.id }, new { area = "" })</li>
+
                         }
-                    <li> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</li>
+                        <li> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</li>
                     </ul>
 
                     <div>
@@ -48,7 +53,7 @@
 
         <tr>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { id=item.ConceptId })
             </td>
         </tr>
         }
