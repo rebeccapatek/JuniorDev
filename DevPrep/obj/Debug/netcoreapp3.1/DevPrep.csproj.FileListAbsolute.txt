@@ -140,12 +140,16 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Areas\
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Create.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Edit.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Index.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\SoftwareLanguage\Index.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.RazorTargetAssemblyInfo.cache
@@ -158,7 +162,5 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.dll
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.pdb
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.genruntimeconfig.cache
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\DevPrep.csprojAssemblyReference.cache
-C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\SoftwareLanguage\Index.cshtml.g.cs
-C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Index.cshtml.g.cs
-C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Create.cshtml.g.cs
-C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Edit.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\UsefulLinks\Create.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Descriptions\Create.cshtml.g.cs

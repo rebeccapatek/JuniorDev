@@ -143,10 +143,13 @@ namespace DevPrep.Controllers
                     .Include(c => c.UsefulLinks)
                     .FirstOrDefaultAsync(concept => concept.id == id);
                 concept.Name = editConceptViewModel.ConceptName;
+                //this is updating the lists with new list and it updates the links/descriptions database
                 concept.UsefulLinks = editConceptViewModel.Links;
                 concept.Descriptions = editConceptViewModel.Descriptions;
+                //this is what edits the concept in the database.
                 _context.Concepts.Update(concept);
                 await _context.SaveChangesAsync();
+                //the , new Id lets you grab the software id and include it in the route
                    return RedirectToAction(nameof(Index), new { id = concept.SoftwareLanguageId });
             
 

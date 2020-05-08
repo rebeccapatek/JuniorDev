@@ -28,13 +28,17 @@
                         {
                             <li> @des.Paragraph </li>
                         }
+                        <li> @Html.ActionLink("Add A Paragraph", "Create", "Descriptions", new { id = item.ConceptId }, new { area = "" })</li>
+
                     </ol>
-                    <ol>
+                    <ul>
                         @foreach (var link in item.UsefulLinks)
                         {
                             <li> @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> </li>
                         }
-                    </ol>
+                    <li> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</li>
+                    </ul>
+
                     <div>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })
                     </div>
@@ -44,7 +48,6 @@
 
         <tr>
             <td>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
