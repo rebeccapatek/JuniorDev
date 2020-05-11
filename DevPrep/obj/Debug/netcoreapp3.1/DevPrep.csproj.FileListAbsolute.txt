@@ -167,3 +167,8 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Concepts\Delete.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\Descriptions\Delete.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\UsefulLinks\Delete.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\DetailsBack.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\DetailsFront.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Create.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Edit.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Delete.cshtml.g.cs
