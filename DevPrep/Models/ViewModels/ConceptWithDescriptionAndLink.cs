@@ -11,6 +11,7 @@ namespace DevPrep.Models.ViewModels
         public string ConceptName { get; set; }
 
         public int? SoftwareLanguageId { get; set; }
+     
 
         public List<UsefulLink> UsefulLinks { get; set; }
 

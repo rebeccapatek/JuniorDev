@@ -9,5 +9,7 @@ namespace DevPrep.Models.ViewModels
     {
         public List<ConceptWithDescriptionAndLink> ConceptsWithStuff { get; set; }
 
+        public ApplicationUser LoggedInUser { get; set; }
+
     }
 }

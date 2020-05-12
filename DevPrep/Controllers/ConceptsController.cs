@@ -32,6 +32,7 @@ namespace DevPrep.Controllers
         public async Task<ActionResult> Index(int? id)
         {
             var model = new ConceptViewModel();
+            var user = await GetCurrentUserAsync();
 
 
             model.ConceptsWithStuff = await _context
@@ -45,7 +46,7 @@ namespace DevPrep.Controllers
                     UsefulLinks = c.UsefulLinks.ToList(),
                     Descriptions = c.Descriptions.ToList()
                 }).ToListAsync();
-
+            model.LoggedInUser = user;
             return View(model);
         }
 

@@ -1,19 +1,22 @@
-﻿@model DevPrep.Models.ViewModels.ConceptViewModel
+﻿
+@model DevPrep.Models.ViewModels.ConceptViewModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Concepts</h1>
 
 <p>
-    <a asp-action="Create" asp-route-id="@Model.ConceptsWithStuff[0].SoftwareLanguageId">Create New</a>
+    <a asp-action="Create" asp-route-id="@Model.ConceptsWithStuff[0].SoftwareLanguageId">Create New Concept</a>
 </p>
 <table class="table">
     <thead>
 
         <tr>
-            <th></th>
+            <th scope="col">Concepts</th>
+            <th scope="col">Descriptions</th>
+
         </tr>
     </thead>
     <tbody>
@@ -21,40 +24,35 @@
         {
 
             <tr>
+                <th scope="row">@(item.ConceptName)</th>
+                    
                 <td>
-                    @(item.ConceptName)
-                    <ol>
-                        @foreach (var des in item.Descriptions)
-                        {
-                            <li> @des.Paragraph </li>
-                            <li>@Html.ActionLink("Delete", "Delete", "Descriptions", new { id = des.id }, new { area = "" })</li>
+                    @foreach (var des in item.Descriptions)
+                    {
+                    <li>
+                        @des.Paragraph <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.id })'" /><input type="button" value="+" class="btn-outline-success" onclick="location.href='@Url.Action("Create", "Descriptions", new { id = item.ConceptId })'" />
 
-                        }
-                        <li> @Html.ActionLink("Add A Paragraph", "Create", "Descriptions", new { id = item.ConceptId }, new { area = "" })</li>
+                    </li>
+
+                    }
 
 
-                    </ol>
+
                     <ul>
                         @foreach (var link in item.UsefulLinks)
                         {
-                            <li> @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> </li>
-                            <li>@Html.ActionLink("Delete", "Delete", "UsefulLinks", new { id = link.id }, new { area = "" })</li>
-
+                        <li>
+                            @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> 
+                            @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.id })'" />} 
+                        </li>
                         }
-                        <li> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</li>
+                        <div> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</div>
                     </ul>
-
-                    <div>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })
-                    </div>
                 </td>
             </tr>
-
-
         <tr>
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id=item.ConceptId })
-            </td>
+                <th scope="row">@Html.ActionLink("Delete", "Delete", new { id = item.ConceptId }) |  @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })</th>
+           
         </tr>
         }
     </tbody>
