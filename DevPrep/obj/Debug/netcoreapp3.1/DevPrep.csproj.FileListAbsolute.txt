@@ -172,3 +172,4 @@ C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Create.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Edit.cshtml.g.cs
 C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Delete.cshtml.g.cs
+C:\Users\rebec\source\repos\DevPrep\DevPrep\obj\Debug\netcoreapp3.1\Razor\Views\VocabWords\Index.cshtml.g.cs
