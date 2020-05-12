@@ -28,9 +28,10 @@ namespace DevPrep.Controllers
             _context = ctx;
         }
         // GET: VocabWords
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<VocabWord> vocabWords = await _context.VocabWords.ToListAsync();
+            return View(vocabWords);
         }
 
         // GET: VocabWords/Details/5
