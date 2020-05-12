@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DevPrep.Data;
 using DevPrep.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevPrep.Controllers
 {
+    [Authorize]
     public class SoftwareLanguageController : Controller
     {
         private readonly ApplicationDbContext _context;
