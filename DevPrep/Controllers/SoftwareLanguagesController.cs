@@ -40,20 +40,31 @@ namespace DevPrep.Controllers
         }
 
         // GET: SoftwareLanguages/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var softwareLanguage = new SoftwareLanguage();
+            return View(softwareLanguage);
         }
 
         // POST: SoftwareLanguages/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(SoftwareLanguage softwareLanguage)
         {
             try
             {
-                // TODO: Add insert logic here
+             
 
+                var software = new SoftwareLanguage
+                {
+                    Name = softwareLanguage.Name
+                
+                };
+               
+
+                _context.SoftwareLanguages.Add(software);
+                //Save changes to the databse
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
