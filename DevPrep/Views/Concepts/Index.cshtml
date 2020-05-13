@@ -30,11 +30,13 @@
                     @foreach (var des in item.Descriptions)
                     {
                     <li>
-                        @des.Paragraph <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.id })'" /><input type="button" value="+" class="btn-outline-success" onclick="location.href='@Url.Action("Create", "Descriptions", new { id = item.ConceptId })'" />
+                        @des.Paragraph  @if (@des.ApplicationUserId == @Model.LoggedInUser.Id)
+                        {<input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.id })'" />}
 
                     </li>
 
                     }
+                <div>@Html.ActionLink("Add a Paragraph", "Create", "Descriptions", new { id = item.ConceptId }, new {area=""})</div>
 
 
 
