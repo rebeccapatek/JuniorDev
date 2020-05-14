@@ -33,6 +33,9 @@ namespace DevPrep.Controllers
         {
             var model = new ConceptViewModel();
             var user = await GetCurrentUserAsync();
+            model.SoftwareLanguage = await _context
+               .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
+
 
 
             model.ConceptsWithStuff = await _context
@@ -40,7 +43,7 @@ namespace DevPrep.Controllers
                 .Where(c => c.SoftwareLanguageId == id)
                 .Select(c => new ConceptWithDescriptionAndLink()
                 {
-                    ConceptId = c.id,
+                    ConceptId = c.Id,
                     ConceptName = c.Name,
                     SoftwareLanguageId = id,
                     UsefulLinks = c.UsefulLinks.ToList(),
@@ -62,7 +65,7 @@ namespace DevPrep.Controllers
         {
 
 
-            var technology = await _context.SoftwareLanguages.FirstOrDefaultAsync(SL => SL.id == id);
+            var technology = await _context.SoftwareLanguages.FirstOrDefaultAsync(SL => SL.Id == id);
 
 
             var viewModel = new AddNewConceptwithDescriptionViewModel();
@@ -95,7 +98,7 @@ namespace DevPrep.Controllers
                 {
                     Paragraph = addNewConceptwithDescriptionViewModel.ConceptDescription,
                     ApplicationUserId = user.Id,
-                    ConceptId = concept.id
+                    ConceptId = concept.Id
                 };
                 _context.Descriptions.Add(description);
                 await _context.SaveChangesAsync();
@@ -143,12 +146,12 @@ namespace DevPrep.Controllers
                 var concept = await _context.Concepts
                     .Include(c => c.Descriptions)
                     .Include(c => c.UsefulLinks)
-                    .FirstOrDefaultAsync(concept => concept.id == id);
+                    .FirstOrDefaultAsync(concept => concept.Id == id);
                 concept.Name = editConceptViewModel.ConceptName;
                 //this is updating the lists with new list and it updates the links/descriptions database
                 concept.UsefulLinks = editConceptViewModel.Links;
                 concept.Descriptions = editConceptViewModel.Descriptions;
-                concept.id = id;
+                concept.Id = id;
                 //this is what edits the concept in the database.
                 _context.Concepts.Update(concept);
                 await _context.SaveChangesAsync();
@@ -177,7 +180,7 @@ namespace DevPrep.Controllers
             var concept = await _context.Concepts
                 .Include(c => c.Descriptions)
                 .Include(c => c.UsefulLinks)
-                .FirstOrDefaultAsync(c => c.id == id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             return View(concept);
         }

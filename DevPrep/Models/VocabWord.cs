@@ -7,7 +7,7 @@ namespace DevPrep.Models
 {
     public class VocabWord
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Word { get; set; }
         public string Definition { get; set; }
         public int SoftwareLanguageId { get; set; }

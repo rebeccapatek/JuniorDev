@@ -67,10 +67,6 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.2, )"
-            },
-            "jQuery.UI.Combined": {
-              "target": "Package",
-              "version": "[1.12.1, )"
             }
           },
           "imports": [
