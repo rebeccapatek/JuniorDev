@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ConceptName" class="control-label"></label>
+                <label asp-for="ConceptName" class="control-label">Concept Name</label>
                 <input asp-for="ConceptName" class="form-control" />
                 <span asp-validation-for="ConceptName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ConceptDescription" class="control-label"></label>
+                <label asp-for="ConceptDescription" class="control-label">Description</label>
                 <textarea asp-for="ConceptDescription" class="form-control"></textarea>
                 <span asp-validation-for="ConceptDescription" class="text-danger"></span>
             </div>
