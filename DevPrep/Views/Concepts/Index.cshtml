@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Concepts</h1>
+<h1>@Model.SoftwareLanguage.Name Concepts</h1>
 
 <p>
     <a asp-action="Create" asp-route-id="@Model.ConceptsWithStuff[0].SoftwareLanguageId">Create New Concept</a>
@@ -30,11 +30,13 @@
                     @foreach (var des in item.Descriptions)
                     {
                     <li>
-                        @des.Paragraph <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.id })'" /><input type="button" value="+" class="btn-outline-success" onclick="location.href='@Url.Action("Create", "Descriptions", new { id = item.ConceptId })'" />
+                        @des.Paragraph  @if (@des.ApplicationUserId == @Model.LoggedInUser.Id)
+                        {<input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.Id })'" />}
 
                     </li>
 
                     }
+                <div>@Html.ActionLink("Add a Paragraph", "Create", "Descriptions", new { id = item.ConceptId }, new {area=""})</div>
 
 
 
@@ -43,7 +45,7 @@
                         {
                         <li>
                             @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> 
-                            @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.id })'" />} 
+                            @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.Id })'" />} 
                         </li>
                         }
                         <div> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</div>

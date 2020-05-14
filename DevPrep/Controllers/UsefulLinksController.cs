@@ -46,7 +46,7 @@ namespace DevPrep.Controllers
             //    await _context.SaveChangesAsync();
             //    return RedirectToAction(nameof(Index), "Concepts", new { area = "" });
             //}
-            var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.id == id);
+            var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.Id == id);
 
 
             var link = new UsefulLink();
@@ -65,7 +65,7 @@ namespace DevPrep.Controllers
         {
             try
             {
-                var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.id == id);
+                var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.Id == id);
                 var user = await GetCurrentUserAsync();
                 var useful = new UsefulLink();
 
@@ -112,7 +112,7 @@ namespace DevPrep.Controllers
         // GET: Links/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var link = await _context.UsefulLinks.FirstOrDefaultAsync(item => item.id == id);
+            var link = await _context.UsefulLinks.FirstOrDefaultAsync(item => item.Id == id);
             return View(link);
         }
 
@@ -125,7 +125,7 @@ namespace DevPrep.Controllers
             {
                 var matchingLink = await _context.UsefulLinks
                                .Include(ml => ml.Concept)
-                               .FirstOrDefaultAsync(ml => ml.id == id);
+                               .FirstOrDefaultAsync(ml => ml.Id == id);
 
                 var matchingSoftwareLangId = matchingLink.Concept.SoftwareLanguageId;
                 _context.UsefulLinks.Remove(matchingLink);
