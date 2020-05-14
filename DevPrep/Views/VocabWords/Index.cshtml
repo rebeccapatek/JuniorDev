@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DevPrep.Models.VocabWord>
+﻿@model DevPrep.Models.ViewModels.VocabWordViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -11,12 +11,12 @@
 </p>
 <section>
      
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.VocabWords)
             {
-                if (Model.First() == item)
+                if (Model.VocabWords.First() == item)
                 {<div class="carousel-item active">
                         <div class="d-block w-100">Word : @Html.DisplayFor(modelItem => item.Word)</div>
                     </div>}
@@ -29,14 +29,19 @@
 
 
                 <div class="carousel-item">
+                   
                     <div class="d-block w-100">Definition: @Html.DisplayFor(modelItem => item.Definition)</div>
                     <div>
-                        <p>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </p>
+                        @if (@item.ApplicationUserId == @Model.LoggedInUser.Id)
+                        {
+                            <p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </p>
+                        }
                     </div>
                 </div>
             }
+            
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

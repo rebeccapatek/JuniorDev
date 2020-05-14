@@ -8,13 +8,14 @@
     <h1>@Model.SoftwareLanguage.Name Concepts</h1>
 
 <p>
-    <a asp-action="Create" asp-route-id="@Model.ConceptsWithStuff[0].SoftwareLanguageId">Create New Concept</a>
+    
+    <a asp-action="Create" asp-route-id="@Model.SoftwareLanguage.Id">Create New Concept</a>
 </p>
 <table class="table">
     <thead>
 
         <tr>
-            <th scope="col">Concepts</th>
+            <th scope="col" >Concepts</th>
             <th scope="col">Descriptions</th>
 
         </tr>
@@ -44,7 +45,7 @@
                         @foreach (var link in item.UsefulLinks)
                         {
                         <li>
-                            @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> 
+                            @link.Title  <a href="@link.Link" target="_blank">@link.Link </a> 
                             @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.Id })'" />} 
                         </li>
                         }
@@ -52,10 +53,12 @@
                     </ul>
                 </td>
             </tr>
-        <tr>
-                <th scope="row">@Html.ActionLink("Delete", "Delete", new { id = item.ConceptId }) |  @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })</th>
-           
-        </tr>
+            <tr>
+                @if (item.ApplicationUserId == @Model.LoggedInUser.Id)
+                {
+                    <th scope="row">@Html.ActionLink("Delete", "Delete", new { id = item.ConceptId }) |  @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })</th>
+                }
+            </tr>
         }
     </tbody>
 
