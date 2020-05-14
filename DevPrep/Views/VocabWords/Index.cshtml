@@ -10,8 +10,7 @@
     <a asp-action="Create">Add A New Card</a>
 </p>
 <section>
-  
-
+     
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 
@@ -33,7 +32,7 @@
                     <div class="d-block w-100">Definition: @Html.DisplayFor(modelItem => item.Definition)</div>
                     <div>
                         <p>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) | @Html.ActionLink("Delete", "Delete", new { id = item.id })
                         </p>
                     </div>
                 </div>
@@ -48,8 +47,7 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
-    <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+   
         <script>
             $('.carousel').carousel(
                 {

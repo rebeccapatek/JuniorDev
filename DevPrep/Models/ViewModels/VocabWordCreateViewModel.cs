@@ -9,7 +9,7 @@ namespace DevPrep.Models.ViewModels
 {
     public class VocabWordCreateViewModel
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         [Required]
 
         public string Word { get; set; }

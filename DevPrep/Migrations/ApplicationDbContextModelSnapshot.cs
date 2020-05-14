@@ -21,7 +21,7 @@ namespace DevPrep.Migrations
 
             modelBuilder.Entity("DevPrep.Models.Concept", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -35,7 +35,7 @@ namespace DevPrep.Migrations
                     b.Property<int>("SoftwareLanguageId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -46,79 +46,30 @@ namespace DevPrep.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             Name = "Map",
                             SoftwareLanguageId = 3
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             Name = "If/else",
                             SoftwareLanguageId = 3
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             Name = "Anchor tags",
                             SoftwareLanguageId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "CRUD",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "Front End Developer",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "Back End Developer",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "Entity Relationship Diagram",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "Javascript Object Notation",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "User interface design",
-                            SoftwareLanguageId = 9
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Name = "User experience design",
-                            SoftwareLanguageId = 9
                         });
                 });
 
             modelBuilder.Entity("DevPrep.Models.Description", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -126,13 +77,13 @@ namespace DevPrep.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("ConceptId")
+                    b.Property<int>("ConceptId")
                         .HasColumnType("int");
 
                     b.Property<string>("Paragraph")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -143,100 +94,30 @@ namespace DevPrep.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 1,
                             Paragraph = "Alows you to go through each object and get the data on it"
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 1,
                             Paragraph = "This is really helpful to use"
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 2,
                             Paragraph = "This tells the computer to try the statement after the if in () and if that's true run the {} if it's false then run the else {}"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 4,
-                            Paragraph = "Create, Read, Update, Delete are the four basic actions of persistent storage."
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 5,
-                            Paragraph = "client side production (using HTML, CSS, JavaScript) for a Website/ Web Application so that a user can see and interact with it directly."
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 6,
-                            Paragraph = " developing software on the server-side.  These are behind the scenes activities that happen when performing any action on a website.  Back-End Focuses on dealing with Databases. A Back End developer works with Database and cache, Servers, and APIs."
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 7,
-                            Paragraph = "ERDs- shows tables in a database and the relationships between tables within that database. Entities are the things for which we want to store information"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 8,
-                            Paragraph = "JSON- A standard file format that uses human readable text to store and transfer data objects consisting of key-value pairs and array data types."
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 8,
-                            Paragraph = " It is easy for humans to read and write, it is easy for machines to parse and generate."
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 9,
-                            Paragraph = "UI-This is strictly a digital term that talking about how a user interacts with the software.  UI considers the look, feel, and interactivity of the product."
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 9,
-                            Paragraph = "The goal is to make sure that the interface is as intuitive as possible. UI designers think about icons/buttons, typography and color schemes(graphic design), spacing, imagery, and responsive design."
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 10,
-                            Paragraph = "UX Design. A human-first way of designing a software product. User experience include all aspects of the end-user’s interaction with the company, its services, and its products."
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 10,
-                            Paragraph = "A designer should think about how the experience of using the software makes the user feel, and how easily they can accomplish their desired tasks.They try to improve the quality of interaction between the user and all facets of a company."
                         });
                 });
 
             modelBuilder.Entity("DevPrep.Models.InterviewQuestion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -250,7 +131,7 @@ namespace DevPrep.Migrations
                     b.Property<string>("Question")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -259,7 +140,7 @@ namespace DevPrep.Migrations
 
             modelBuilder.Entity("DevPrep.Models.SoftwareLanguage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -267,71 +148,71 @@ namespace DevPrep.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("SoftwareLanguages");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             Name = "HTML"
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             Name = "CSS"
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             Name = "Javascript"
                         },
                         new
                         {
-                            Id = 4,
+                            id = 4,
                             Name = "React"
                         },
                         new
                         {
-                            Id = 5,
+                            id = 5,
                             Name = "Github"
                         },
                         new
                         {
-                            Id = 6,
+                            id = 6,
                             Name = "Slack"
                         },
                         new
                         {
-                            Id = 7,
+                            id = 7,
                             Name = "Csharp"
                         },
                         new
                         {
-                            Id = 8,
+                            id = 8,
                             Name = "SQL"
                         },
                         new
                         {
-                            Id = 9,
+                            id = 9,
                             Name = "General Concepts"
                         },
                         new
                         {
-                            Id = 10,
+                            id = 10,
                             Name = "DotNet"
                         },
                         new
                         {
-                            Id = 11,
+                            id = 11,
                             Name = "Bootstrap"
                         });
                 });
 
             modelBuilder.Entity("DevPrep.Models.UsefulLink", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -351,7 +232,7 @@ namespace DevPrep.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -364,7 +245,7 @@ namespace DevPrep.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 1,
                             Link = "www.youtube.com",
@@ -372,7 +253,7 @@ namespace DevPrep.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 1,
                             Link = "www.wsj.com",
@@ -380,49 +261,17 @@ namespace DevPrep.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ConceptId = 2,
                             Link = "www.youtube.com",
                             Title = "Watch this youtube to review how to do an if/esle"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 6,
-                            Link = "https://www.youtube.com/watch?v=n_gODKYn9dM",
-                            Title = "Here is an enthusiastic YouTube explaining the difference between Back-End and Front End:"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 6,
-                            Link = "https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html",
-                            Title = "Here is a great article about the difference between a front-end and a back-end developer:"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 7,
-                            Link = "https://dbdiagram.io/home",
-                            Title = "Here is a link to a website that will help you make your own ERD:"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            ConceptId = 9,
-                            Link = "https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think",
-                            Title = "Here is a great book to pick up regarding this subject:"
                         });
                 });
 
             modelBuilder.Entity("DevPrep.Models.VocabWord", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -439,7 +288,7 @@ namespace DevPrep.Migrations
                     b.Property<string>("Word")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.HasIndex("ApplicationUserId");
 
@@ -450,31 +299,31 @@ namespace DevPrep.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            id = 1,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Definition = "Entity Relationship Diagram- shows tables in a database and the relationships between tables within that database",
-                            SoftwareLanguageId = 9,
-                            Word = "ERD"
+                            Definition = "Something",
+                            SoftwareLanguageId = 1,
+                            Word = "Object"
                         },
                         new
                         {
-                            Id = 2,
+                            id = 2,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Definition = "Javascript Object Notation. A standard file format that uses human readable text to store and transfer data objects consisting of key-value pairs and array data types.",
-                            SoftwareLanguageId = 9,
-                            Word = "JSON"
+                            Definition = "Ware that is Soft",
+                            SoftwareLanguageId = 1,
+                            Word = "Software"
                         },
                         new
                         {
-                            Id = 3,
+                            id = 3,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
-                            Definition = "client side production of Websites and Apps so that a user can see and interact directly",
-                            SoftwareLanguageId = 9,
-                            Word = "Front End Developer"
+                            Definition = "way to get around something",
+                            SoftwareLanguageId = 1,
+                            Word = "Trick"
                         },
                         new
                         {
-                            Id = 4,
+                            id = 4,
                             ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             Definition = "Cascading Style Sheets",
                             SoftwareLanguageId = 2,
@@ -707,13 +556,13 @@ namespace DevPrep.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ac42a5e9-970a-4c69-b2fd-9b4791628bb1",
+                            ConcurrencyStamp = "49cd9881-5347-45f8-9e4c-4d6c09988777",
                             Email = "rebs@rebs.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "REBS@REBS.COM",
                             NormalizedUserName = "REBS@REBS.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO7OvC42tK/FjuaKY4mg41q5WIgN1LrTbFSI5j6NrfPkOPVlVhB85g44Kc6CSEK1uw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPbfvnAycWJHaxkaYKhdKhexW43wCPL22yhFFzSPQ2C2mEY+U2UjV100/hwcOpWSvg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -730,7 +579,7 @@ namespace DevPrep.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("DevPrep.Models.SoftwareLanguage", "SoftwareLanguage")
-                        .WithMany("Concepts")
+                        .WithMany()
                         .HasForeignKey("SoftwareLanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -743,8 +592,10 @@ namespace DevPrep.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("DevPrep.Models.Concept", "Concept")
-                        .WithMany("Descriptions")
-                        .HasForeignKey("ConceptId");
+                        .WithMany()
+                        .HasForeignKey("ConceptId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DevPrep.Models.InterviewQuestion", b =>
@@ -761,7 +612,7 @@ namespace DevPrep.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("DevPrep.Models.Concept", "Concept")
-                        .WithMany("UsefulLinks")
+                        .WithMany()
                         .HasForeignKey("ConceptId");
 
                     b.HasOne("DevPrep.Models.InterviewQuestion", "InterviewQuestion")

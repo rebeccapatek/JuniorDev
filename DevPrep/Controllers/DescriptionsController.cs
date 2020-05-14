@@ -39,7 +39,7 @@ namespace DevPrep.Controllers
         [Route("Descriptions/Create/{id}")]
         public async Task<ActionResult> Create(int? id)
         {
-            var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.Id == id);
+            var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.id == id);
 
 
             var desc = new Description();
@@ -57,7 +57,7 @@ namespace DevPrep.Controllers
         {
             try
             {
-                var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.Id == id);
+                var matchingConcept = await _context.Concepts.FirstOrDefaultAsync(c => c.id == id);
                 var user = await GetCurrentUserAsync();
                 var des = new Description();
 
@@ -106,7 +106,7 @@ namespace DevPrep.Controllers
         // GET: Descriptions/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var description = await _context.Descriptions.FirstOrDefaultAsync(item => item.Id == id);
+            var description = await _context.Descriptions.FirstOrDefaultAsync(item => item.id == id);
             return View(description);
         }
 
@@ -119,7 +119,7 @@ namespace DevPrep.Controllers
             {
                 var matchingDescription = await _context.Descriptions
                     .Include(md => md.Concept)
-                    .FirstOrDefaultAsync(md => md.Id == id);
+                    .FirstOrDefaultAsync(md => md.id == id);
 
                 var matchingSoftwareLangId = matchingDescription.Concept.SoftwareLanguageId;
                 _context.Descriptions.Remove(matchingDescription);

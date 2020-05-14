@@ -7,7 +7,7 @@ namespace DevPrep.Models
 {
     public class UsefulLink
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }
         public int? ConceptId { get; set; }

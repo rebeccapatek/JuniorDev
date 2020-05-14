@@ -7,7 +7,7 @@ namespace DevPrep.Models
 {
     public class InterviewQuestion
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Question { get; set; }
         public string Answer { get; set; }
         public string ApplicationUserId { get; set; }

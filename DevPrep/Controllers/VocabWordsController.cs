@@ -39,7 +39,7 @@ namespace DevPrep.Controllers
         {
             var user = await GetCurrentUserAsync();
             var word = await _context.VocabWords
-               .FirstOrDefaultAsync(vw => vw.Id == id);
+               .FirstOrDefaultAsync(vw => vw.id == id);
 
 
             return View(word);
@@ -48,7 +48,7 @@ namespace DevPrep.Controllers
         {
             var user = await GetCurrentUserAsync();
             var word = await _context.VocabWords
-               .FirstOrDefaultAsync(vw => vw.Id == id);
+               .FirstOrDefaultAsync(vw => vw.id == id);
             return View(word);
         }
 
@@ -61,7 +61,7 @@ namespace DevPrep.Controllers
                 .Select(l => new SelectListItem()
                 {
                     Text = l.Name,
-                    Value = l.Id.ToString()
+                    Value = l.id.ToString()
                 })
                 .ToListAsync();
 
@@ -122,7 +122,7 @@ namespace DevPrep.Controllers
                 .Select(l => new SelectListItem()
                 {
                     Text = l.Name,
-                    Value = l.Id.ToString()
+                    Value = l.id.ToString()
                 })
                 .ToListAsync();
             var user = await GetCurrentUserAsync();
@@ -130,7 +130,7 @@ namespace DevPrep.Controllers
             //return the view model and populate it with the information from the returned todoItem
             var viewModel = new VocabWordCreateViewModel()
             {
-                Id = vocabWord.Id,
+                id = vocabWord.id,
                 Word = vocabWord.Word,
                 Definition = vocabWord.Definition,
                 ApplicationUserId = user.Id,
@@ -158,11 +158,11 @@ namespace DevPrep.Controllers
                     .Select(l => new SelectListItem()
                     {
                         Text = l.Name,
-                        Value = l.Id.ToString()
+                        Value = l.id.ToString()
                     })
                     .ToListAsync();
 
-                var vocabWord = _context.VocabWords.FirstOrDefault(item => item.Id == id);
+                var vocabWord = _context.VocabWords.FirstOrDefault(item => item.id == id);
                 //This is getting the current user who is logged in
                 var user = await GetCurrentUserAsync();
                 //using the same view model as the create 
@@ -186,7 +186,7 @@ namespace DevPrep.Controllers
         // GET: VocabWords/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            var vocabWord = await _context.VocabWords.FirstOrDefaultAsync(vw => vw.Id == id);
+            var vocabWord = await _context.VocabWords.FirstOrDefaultAsync(vw => vw.id == id);
             //get the logged in user id
             var loggedInUser = await GetCurrentUserAsync();
 

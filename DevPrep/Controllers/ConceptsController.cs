@@ -33,8 +33,6 @@ namespace DevPrep.Controllers
         {
             var model = new ConceptViewModel();
             var user = await GetCurrentUserAsync();
-            model.SoftwareLanguage = await _context
-                .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
 
 
             model.ConceptsWithStuff = await _context
@@ -42,7 +40,7 @@ namespace DevPrep.Controllers
                 .Where(c => c.SoftwareLanguageId == id)
                 .Select(c => new ConceptWithDescriptionAndLink()
                 {
-                    ConceptId = c.Id,
+                    ConceptId = c.id,
                     ConceptName = c.Name,
                     SoftwareLanguageId = id,
                     UsefulLinks = c.UsefulLinks.ToList(),
@@ -64,7 +62,7 @@ namespace DevPrep.Controllers
         {
 
 
-            var technology = await _context.SoftwareLanguages.FirstOrDefaultAsync(SL => SL.Id == id);
+            var technology = await _context.SoftwareLanguages.FirstOrDefaultAsync(SL => SL.id == id);
 
 
             var viewModel = new AddNewConceptwithDescriptionViewModel();
@@ -97,7 +95,7 @@ namespace DevPrep.Controllers
                 {
                     Paragraph = addNewConceptwithDescriptionViewModel.ConceptDescription,
                     ApplicationUserId = user.Id,
-                    ConceptId = concept.Id
+                    ConceptId = concept.id
                 };
                 _context.Descriptions.Add(description);
                 await _context.SaveChangesAsync();
@@ -132,7 +130,6 @@ namespace DevPrep.Controllers
             viewModel.ConceptName = concept.Name;
             viewModel.Descriptions = descriptions;
             viewModel.Links = links;
-            viewModel.ConceptId = id;
 
             return View(viewModel);
         }
@@ -142,21 +139,22 @@ namespace DevPrep.Controllers
         {
             try
             {//first or default takes a call-back function
-              
+
                 var concept = await _context.Concepts
                     .Include(c => c.Descriptions)
                     .Include(c => c.UsefulLinks)
-                    .FirstOrDefaultAsync(concept => concept.Id == id);
+                    .FirstOrDefaultAsync(concept => concept.id == id);
                 concept.Name = editConceptViewModel.ConceptName;
                 //this is updating the lists with new list and it updates the links/descriptions database
                 concept.UsefulLinks = editConceptViewModel.Links;
                 concept.Descriptions = editConceptViewModel.Descriptions;
+                concept.id = id;
                 //this is what edits the concept in the database.
                 _context.Concepts.Update(concept);
                 await _context.SaveChangesAsync();
                 //the , new Id lets you grab the software id and include it in the route
-                return RedirectToAction(nameof(Index), new { id = concept.SoftwareLanguageId });
-
+                   return RedirectToAction(nameof(Index), new { id = concept.SoftwareLanguageId });
+            
 
 
 
@@ -179,7 +177,7 @@ namespace DevPrep.Controllers
             var concept = await _context.Concepts
                 .Include(c => c.Descriptions)
                 .Include(c => c.UsefulLinks)
-                .FirstOrDefaultAsync(c => c.Id == id);
+                .FirstOrDefaultAsync(c => c.id == id);
 
             return View(concept);
         }

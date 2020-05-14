@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DevPrep.Migrations
 {
-    public partial class seed6 : Migration
+    public partial class Seed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,13 +53,13 @@ namespace DevPrep.Migrations
                 name: "SoftwareLanguages",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SoftwareLanguages", x => x.Id);
+                    table.PrimaryKey("PK_SoftwareLanguages", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,7 +172,7 @@ namespace DevPrep.Migrations
                 name: "InterviewQuestions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Question = table.Column<string>(nullable: true),
                     Answer = table.Column<string>(nullable: true),
@@ -180,7 +180,7 @@ namespace DevPrep.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InterviewQuestions", x => x.Id);
+                    table.PrimaryKey("PK_InterviewQuestions", x => x.id);
                     table.ForeignKey(
                         name: "FK_InterviewQuestions_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -193,7 +193,7 @@ namespace DevPrep.Migrations
                 name: "Concepts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     SoftwareLanguageId = table.Column<int>(nullable: false),
@@ -201,7 +201,7 @@ namespace DevPrep.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Concepts", x => x.Id);
+                    table.PrimaryKey("PK_Concepts", x => x.id);
                     table.ForeignKey(
                         name: "FK_Concepts_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -212,7 +212,7 @@ namespace DevPrep.Migrations
                         name: "FK_Concepts_SoftwareLanguages_SoftwareLanguageId",
                         column: x => x.SoftwareLanguageId,
                         principalTable: "SoftwareLanguages",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -220,7 +220,7 @@ namespace DevPrep.Migrations
                 name: "VocabWords",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Word = table.Column<string>(nullable: true),
                     Definition = table.Column<string>(nullable: true),
@@ -229,7 +229,7 @@ namespace DevPrep.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VocabWords", x => x.Id);
+                    table.PrimaryKey("PK_VocabWords", x => x.id);
                     table.ForeignKey(
                         name: "FK_VocabWords_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -240,7 +240,7 @@ namespace DevPrep.Migrations
                         name: "FK_VocabWords_SoftwareLanguages_SoftwareLanguageId",
                         column: x => x.SoftwareLanguageId,
                         principalTable: "SoftwareLanguages",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -248,15 +248,15 @@ namespace DevPrep.Migrations
                 name: "Descriptions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ConceptId = table.Column<int>(nullable: true),
+                    ConceptId = table.Column<int>(nullable: false),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     Paragraph = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Descriptions", x => x.Id);
+                    table.PrimaryKey("PK_Descriptions", x => x.id);
                     table.ForeignKey(
                         name: "FK_Descriptions_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -267,15 +267,15 @@ namespace DevPrep.Migrations
                         name: "FK_Descriptions_Concepts_ConceptId",
                         column: x => x.ConceptId,
                         principalTable: "Concepts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "UsefulLinks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Link = table.Column<string>(nullable: true),
@@ -285,7 +285,7 @@ namespace DevPrep.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsefulLinks", x => x.Id);
+                    table.PrimaryKey("PK_UsefulLinks", x => x.id);
                     table.ForeignKey(
                         name: "FK_UsefulLinks_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -296,24 +296,24 @@ namespace DevPrep.Migrations
                         name: "FK_UsefulLinks_Concepts_ConceptId",
                         column: x => x.ConceptId,
                         principalTable: "Concepts",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UsefulLinks_InterviewQuestions_InterviewQuestionId",
                         column: x => x.InterviewQuestionId,
                         principalTable: "InterviewQuestions",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "FirstName", "LastName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "ac42a5e9-970a-4c69-b2fd-9b4791628bb1", "ApplicationUser", "rebs@rebs.com", true, false, null, "REBS@REBS.COM", "REBS@REBS.COM", "AQAAAAEAACcQAAAAEO7OvC42tK/FjuaKY4mg41q5WIgN1LrTbFSI5j6NrfPkOPVlVhB85g44Kc6CSEK1uw==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "rebs@rebs.com", "Rebecca", "Patek" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "49cd9881-5347-45f8-9e4c-4d6c09988777", "ApplicationUser", "rebs@rebs.com", true, false, null, "REBS@REBS.COM", "REBS@REBS.COM", "AQAAAAEAACcQAAAAEPbfvnAycWJHaxkaYKhdKhexW43wCPL22yhFFzSPQ2C2mEY+U2UjV100/hwcOpWSvg==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "rebs@rebs.com", "Rebecca", "Patek" });
 
             migrationBuilder.InsertData(
                 table: "SoftwareLanguages",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "id", "Name" },
                 values: new object[,]
                 {
                     { 1, "HTML" },
@@ -331,64 +331,43 @@ namespace DevPrep.Migrations
 
             migrationBuilder.InsertData(
                 table: "Concepts",
-                columns: new[] { "Id", "ApplicationUserId", "Name", "SoftwareLanguageId" },
+                columns: new[] { "id", "ApplicationUserId", "Name", "SoftwareLanguageId" },
                 values: new object[,]
                 {
                     { 3, "00000000-ffff-ffff-ffff-ffffffffffff", "Anchor tags", 1 },
                     { 1, "00000000-ffff-ffff-ffff-ffffffffffff", "Map", 3 },
-                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", "If/else", 3 },
-                    { 4, "00000000-ffff-ffff-ffff-ffffffffffff", "CRUD", 9 },
-                    { 5, "00000000-ffff-ffff-ffff-ffffffffffff", "Front End Developer", 9 },
-                    { 6, "00000000-ffff-ffff-ffff-ffffffffffff", "Back End Developer", 9 },
-                    { 7, "00000000-ffff-ffff-ffff-ffffffffffff", "Entity Relationship Diagram", 9 },
-                    { 8, "00000000-ffff-ffff-ffff-ffffffffffff", "Javascript Object Notation", 9 },
-                    { 9, "00000000-ffff-ffff-ffff-ffffffffffff", "User interface design", 9 },
-                    { 10, "00000000-ffff-ffff-ffff-ffffffffffff", "User experience design", 9 }
+                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", "If/else", 3 }
                 });
 
             migrationBuilder.InsertData(
                 table: "VocabWords",
-                columns: new[] { "Id", "ApplicationUserId", "Definition", "SoftwareLanguageId", "Word" },
+                columns: new[] { "id", "ApplicationUserId", "Definition", "SoftwareLanguageId", "Word" },
                 values: new object[,]
                 {
-                    { 4, "00000000-ffff-ffff-ffff-ffffffffffff", "Cascading Style Sheets", 2, "C.S.S." },
-                    { 1, "00000000-ffff-ffff-ffff-ffffffffffff", "Entity Relationship Diagram- shows tables in a database and the relationships between tables within that database", 9, "ERD" },
-                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", "Javascript Object Notation. A standard file format that uses human readable text to store and transfer data objects consisting of key-value pairs and array data types.", 9, "JSON" },
-                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", "client side production of Websites and Apps so that a user can see and interact directly", 9, "Front End Developer" }
+                    { 1, "00000000-ffff-ffff-ffff-ffffffffffff", "Something", 1, "Object" },
+                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", "Ware that is Soft", 1, "Software" },
+                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", "way to get around something", 1, "Trick" },
+                    { 4, "00000000-ffff-ffff-ffff-ffffffffffff", "Cascading Style Sheets", 2, "C.S.S." }
                 });
 
             migrationBuilder.InsertData(
                 table: "Descriptions",
-                columns: new[] { "Id", "ApplicationUserId", "ConceptId", "Paragraph" },
+                columns: new[] { "id", "ApplicationUserId", "ConceptId", "Paragraph" },
                 values: new object[,]
                 {
                     { 1, "00000000-ffff-ffff-ffff-ffffffffffff", 1, "Alows you to go through each object and get the data on it" },
-                    { 11, "00000000-ffff-ffff-ffff-ffffffffffff", 9, "The goal is to make sure that the interface is as intuitive as possible. UI designers think about icons/buttons, typography and color schemes(graphic design), spacing, imagery, and responsive design." },
-                    { 10, "00000000-ffff-ffff-ffff-ffffffffffff", 9, "UI-This is strictly a digital term that talking about how a user interacts with the software.  UI considers the look, feel, and interactivity of the product." },
-                    { 9, "00000000-ffff-ffff-ffff-ffffffffffff", 8, " It is easy for humans to read and write, it is easy for machines to parse and generate." },
-                    { 8, "00000000-ffff-ffff-ffff-ffffffffffff", 8, "JSON- A standard file format that uses human readable text to store and transfer data objects consisting of key-value pairs and array data types." },
-                    { 7, "00000000-ffff-ffff-ffff-ffffffffffff", 7, "ERDs- shows tables in a database and the relationships between tables within that database. Entities are the things for which we want to store information" },
-                    { 12, "00000000-ffff-ffff-ffff-ffffffffffff", 10, "UX Design. A human-first way of designing a software product. User experience include all aspects of the end-user’s interaction with the company, its services, and its products." },
-                    { 6, "00000000-ffff-ffff-ffff-ffffffffffff", 6, " developing software on the server-side.  These are behind the scenes activities that happen when performing any action on a website.  Back-End Focuses on dealing with Databases. A Back End developer works with Database and cache, Servers, and APIs." },
-                    { 13, "00000000-ffff-ffff-ffff-ffffffffffff", 10, "A designer should think about how the experience of using the software makes the user feel, and how easily they can accomplish their desired tasks.They try to improve the quality of interaction between the user and all facets of a company." },
-                    { 4, "00000000-ffff-ffff-ffff-ffffffffffff", 4, "Create, Read, Update, Delete are the four basic actions of persistent storage." },
-                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", 2, "This tells the computer to try the statement after the if in () and if that's true run the {} if it's false then run the else {}" },
                     { 2, "00000000-ffff-ffff-ffff-ffffffffffff", 1, "This is really helpful to use" },
-                    { 5, "00000000-ffff-ffff-ffff-ffffffffffff", 5, "client side production (using HTML, CSS, JavaScript) for a Website/ Web Application so that a user can see and interact with it directly." }
+                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", 2, "This tells the computer to try the statement after the if in () and if that's true run the {} if it's false then run the else {}" }
                 });
 
             migrationBuilder.InsertData(
                 table: "UsefulLinks",
-                columns: new[] { "Id", "ApplicationUserId", "ConceptId", "InterviewQuestionId", "Link", "Title" },
+                columns: new[] { "id", "ApplicationUserId", "ConceptId", "InterviewQuestionId", "Link", "Title" },
                 values: new object[,]
                 {
-                    { 5, "00000000-ffff-ffff-ffff-ffffffffffff", 6, null, "https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html", "Here is a great article about the difference between a front-end and a back-end developer:" },
-                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", 2, null, "www.youtube.com", "Watch this youtube to review how to do an if/esle" },
-                    { 6, "00000000-ffff-ffff-ffff-ffffffffffff", 7, null, "https://dbdiagram.io/home", "Here is a link to a website that will help you make your own ERD:" },
-                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", 1, null, "www.wsj.com", "I love this article on mapping" },
                     { 1, "00000000-ffff-ffff-ffff-ffffffffffff", 1, null, "www.youtube.com", "Here is a great youtube that explains maping" },
-                    { 7, "00000000-ffff-ffff-ffff-ffffffffffff", 9, null, "https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think", "Here is a great book to pick up regarding this subject:" },
-                    { 4, "00000000-ffff-ffff-ffff-ffffffffffff", 6, null, "https://www.youtube.com/watch?v=n_gODKYn9dM", "Here is an enthusiastic YouTube explaining the difference between Back-End and Front End:" }
+                    { 2, "00000000-ffff-ffff-ffff-ffffffffffff", 1, null, "www.wsj.com", "I love this article on mapping" },
+                    { 3, "00000000-ffff-ffff-ffff-ffffffffffff", 2, null, "www.youtube.com", "Watch this youtube to review how to do an if/esle" }
                 });
 
             migrationBuilder.CreateIndex(
