@@ -34,7 +34,12 @@ namespace DevPrep.Controllers
             var model = new ConceptViewModel();
             var user = await GetCurrentUserAsync();
             model.SoftwareLanguage = await _context
+<<<<<<< HEAD
+               .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
+
+=======
                 .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
+>>>>>>> master
 
 
             model.ConceptsWithStuff = await _context
@@ -45,6 +50,7 @@ namespace DevPrep.Controllers
                     ConceptId = c.Id,
                     ConceptName = c.Name,
                     SoftwareLanguageId = id,
+                    ApplicationUserId = c.ApplicationUserId,
                     UsefulLinks = c.UsefulLinks.ToList(),
                     Descriptions = c.Descriptions.ToList()
                 }).ToListAsync();
@@ -151,6 +157,10 @@ namespace DevPrep.Controllers
                 //this is updating the lists with new list and it updates the links/descriptions database
                 concept.UsefulLinks = editConceptViewModel.Links;
                 concept.Descriptions = editConceptViewModel.Descriptions;
+<<<<<<< HEAD
+                concept.Id = id;
+=======
+>>>>>>> master
                 //this is what edits the concept in the database.
                 _context.Concepts.Update(concept);
                 await _context.SaveChangesAsync();
@@ -193,8 +203,16 @@ namespace DevPrep.Controllers
             try
             {
                 var usefulLinks = await _context.UsefulLinks.Where(ul => ul.ConceptId == id).ToListAsync();
+                var descriptions = await _context.Descriptions.Where(d => d.ConceptId == id).ToListAsync();
                 var softwareLangId = concept.SoftwareLanguageId;
-                _context.UsefulLinks.RemoveRange(usefulLinks);
+                if (usefulLinks.Count > 0)
+                {
+                    _context.UsefulLinks.RemoveRange(usefulLinks);
+                }
+                if (descriptions.Count > 0)
+                {
+                    _context.Descriptions.RemoveRange(descriptions);
+                }
 
 
 

@@ -6,7 +6,6 @@
 
 <h1>Create</h1>
 
-<h4>VocabWordCreateViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,7 +25,7 @@
                 <span asp-validation-for="Definition" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SoftwareLanguageId" class="control-label"></label>
+                <label asp-for="SoftwareLanguageId" class="control-label">Software Language Most Related</label>
                 <select asp-for="SoftwareLanguageId" class="form-control" asp-items="@Model.SoftwareLanguageOptions"></select>
             </div>
             <div class="form-group">

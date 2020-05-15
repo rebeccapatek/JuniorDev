@@ -30,8 +30,11 @@ namespace DevPrep.Controllers
         // GET: VocabWords
         public async Task<ActionResult> Index()
         {
-            List<VocabWord> vocabWords = await _context.VocabWords.ToListAsync();
-            return View(vocabWords);
+            var model = new VocabWordViewModel();
+            var user = await GetCurrentUserAsync();
+            model.VocabWords = await _context.VocabWords.ToListAsync();
+            model.LoggedInUser = user;
+            return View(model);
         }
 
         // GET: VocabWords/Details/5
@@ -130,7 +133,11 @@ namespace DevPrep.Controllers
             //return the view model and populate it with the information from the returned todoItem
             var viewModel = new VocabWordCreateViewModel()
             {
+<<<<<<< HEAD
+                id = vocabWord.Id,
+=======
                 Id = vocabWord.Id,
+>>>>>>> master
                 Word = vocabWord.Word,
                 Definition = vocabWord.Definition,
                 ApplicationUserId = user.Id,

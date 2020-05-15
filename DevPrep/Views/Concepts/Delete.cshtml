@@ -24,6 +24,8 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="@Model.Id" />
         <input type="hidden" asp-for="@Model.SoftwareLanguageId" />
+        <input type="hidden" asp-for="@Model.ApplicationUserId" />
+
 
 
         <input type="submit" value="Delete" class="btn btn-danger" /> |

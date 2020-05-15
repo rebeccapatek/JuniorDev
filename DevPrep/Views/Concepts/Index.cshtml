@@ -5,16 +5,21 @@
     ViewData["Title"] = "Index";
 }
 
+<<<<<<< HEAD
+    <h1>@Model.SoftwareLanguage.Name Concepts</h1>
+=======
 <h1>@Model.SoftwareLanguage.Name Concepts</h1>
+>>>>>>> master
 
 <p>
-    <a asp-action="Create" asp-route-id="@Model.ConceptsWithStuff[0].SoftwareLanguageId">Create New Concept</a>
+    
+    <a asp-action="Create" asp-route-id="@Model.SoftwareLanguage.Id">Create New Concept</a>
 </p>
 <table class="table">
     <thead>
 
         <tr>
-            <th scope="col">Concepts</th>
+            <th scope="col" >Concepts</th>
             <th scope="col">Descriptions</th>
 
         </tr>
@@ -31,7 +36,11 @@
                     {
                     <li>
                         @des.Paragraph  @if (@des.ApplicationUserId == @Model.LoggedInUser.Id)
+<<<<<<< HEAD
+                        {<input type="button" value="-" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.Id })'" />}
+=======
                         {<input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "Descriptions", new { id = des.Id })'" />}
+>>>>>>> master
 
                     </li>
 
@@ -44,18 +53,25 @@
                         @foreach (var link in item.UsefulLinks)
                         {
                         <li>
+<<<<<<< HEAD
+                            @link.Title  <a href="@link.Link" target="_blank">@link.Link </a> 
+                            @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.Id })'" />} 
+=======
                             @link.Title  <a href="http://@link.Link" target="_blank">@link.Link </a> 
                             @if (@link.ApplicationUserId == @Model.LoggedInUser.Id) { <input type="button" value="-" class="btn-danger" onclick="location.href='@Url.Action("Delete", "UsefulLinks", new { id = link.Id })'" />} 
+>>>>>>> master
                         </li>
                         }
                         <div> @Html.ActionLink("Add Link", "Create", "UsefulLinks", new { id = item.ConceptId }, new { area = "" })</div>
                     </ul>
                 </td>
             </tr>
-        <tr>
-                <th scope="row">@Html.ActionLink("Delete", "Delete", new { id = item.ConceptId }) |  @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })</th>
-           
-        </tr>
+            <tr>
+                @if (item.ApplicationUserId == @Model.LoggedInUser.Id)
+                {
+                    <th scope="row">@Html.ActionLink("Delete", "Delete", new { id = item.ConceptId }) |  @Html.ActionLink("Edit", "Edit", new { id = item.ConceptId })</th>
+                }
+            </tr>
         }
     </tbody>
 
