@@ -10,14 +10,10 @@
     <a asp-action="Create">Add A New Card</a>
 </p>
 <section>
-<<<<<<< HEAD
+
      
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
-=======
-  
 
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
->>>>>>> master
         <div class="carousel-inner">
 
             @foreach (var item in Model.VocabWords)
@@ -38,18 +34,14 @@
                    
                     <div class="d-block w-100">Definition: @Html.DisplayFor(modelItem => item.Definition)</div>
                     <div>
-<<<<<<< HEAD
+
                         @if (@item.ApplicationUserId == @Model.LoggedInUser.Id)
                         {
                             <p>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                             </p>
                         }
-=======
-                        <p>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </p>
->>>>>>> master
+
                     </div>
                 </div>
             }
