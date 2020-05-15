@@ -133,7 +133,11 @@ namespace DevPrep.Controllers
             //return the view model and populate it with the information from the returned todoItem
             var viewModel = new VocabWordCreateViewModel()
             {
+<<<<<<< HEAD
                 id = vocabWord.Id,
+=======
+                Id = vocabWord.Id,
+>>>>>>> master
                 Word = vocabWord.Word,
                 Definition = vocabWord.Definition,
                 ApplicationUserId = user.Id,

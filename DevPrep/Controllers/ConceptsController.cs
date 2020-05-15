@@ -34,8 +34,12 @@ namespace DevPrep.Controllers
             var model = new ConceptViewModel();
             var user = await GetCurrentUserAsync();
             model.SoftwareLanguage = await _context
+<<<<<<< HEAD
                .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
 
+=======
+                .SoftwareLanguages.FirstOrDefaultAsync(sl => sl.Id == id);
+>>>>>>> master
 
 
             model.ConceptsWithStuff = await _context
@@ -134,6 +138,7 @@ namespace DevPrep.Controllers
             viewModel.ConceptName = concept.Name;
             viewModel.Descriptions = descriptions;
             viewModel.Links = links;
+            viewModel.ConceptId = id;
 
             return View(viewModel);
         }
@@ -143,7 +148,7 @@ namespace DevPrep.Controllers
         {
             try
             {//first or default takes a call-back function
-
+              
                 var concept = await _context.Concepts
                     .Include(c => c.Descriptions)
                     .Include(c => c.UsefulLinks)
@@ -152,13 +157,16 @@ namespace DevPrep.Controllers
                 //this is updating the lists with new list and it updates the links/descriptions database
                 concept.UsefulLinks = editConceptViewModel.Links;
                 concept.Descriptions = editConceptViewModel.Descriptions;
+<<<<<<< HEAD
                 concept.Id = id;
+=======
+>>>>>>> master
                 //this is what edits the concept in the database.
                 _context.Concepts.Update(concept);
                 await _context.SaveChangesAsync();
                 //the , new Id lets you grab the software id and include it in the route
-                   return RedirectToAction(nameof(Index), new { id = concept.SoftwareLanguageId });
-            
+                return RedirectToAction(nameof(Index), new { id = concept.SoftwareLanguageId });
+
 
 
 

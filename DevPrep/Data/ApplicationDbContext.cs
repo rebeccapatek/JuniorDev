@@ -240,7 +240,11 @@ namespace DevPrep.Data
                     Paragraph = "UI-This is strictly a digital term that talking about how a user interacts with the software.  UI considers the look, feel, and interactivity of the product.",
                     ConceptId = 9,
                     ApplicationUserId = "00000000-ffff-ffff-ffff-ffffffffffff"
+<<<<<<< HEAD
                 },
+=======
+                }, 
+>>>>>>> master
                 new Description()
                 {
                     Id = 11,
