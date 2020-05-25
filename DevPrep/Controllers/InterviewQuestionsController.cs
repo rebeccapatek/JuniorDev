@@ -45,20 +45,34 @@ namespace DevPrep.Controllers
         }
 
         // GET: InterviewQuestions/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            return View();
+            var interviewQuestion = new InterviewQuestion();
+            return View(interviewQuestion);
         }
 
         // POST: InterviewQuestions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(InterviewQuestion interviewQuestion)
         {
             try
             {
-                // TODO: Add insert logic here
 
+                var user = await GetCurrentUserAsync();
+
+                var question = new InterviewQuestion
+                {
+                    Question = interviewQuestion.Question,
+                    Answer = interviewQuestion.Answer,
+                    ApplicationUserId = user.Id
+
+                };
+
+
+                _context.InterviewQuestions.Add(question);
+                //Save changes to the databse
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
