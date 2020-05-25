@@ -82,20 +82,44 @@ namespace DevPrep.Controllers
         }
 
         // GET: InterviewQuestions/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var user = await GetCurrentUserAsync();
+            var question = await _context.InterviewQuestions.FindAsync(id);
+            if (question == null)
+            {
+                return NotFound();
+            }
+            return View(question);
         }
 
         // POST: InterviewQuestions/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, InterviewQuestion interviewQuestion)
         {
             try
             {
-                // TODO: Add update logic here
 
+                var user = await GetCurrentUserAsync();
+
+                var question = new InterviewQuestion
+                {
+                    Id = id,
+                    Question = interviewQuestion.Question,
+                    Answer = interviewQuestion.Answer,
+                    ApplicationUserId = user.Id
+
+                };
+
+
+                _context.InterviewQuestions.Update(question);
+                //Save changes to the databse
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -105,19 +129,29 @@ namespace DevPrep.Controllers
         }
 
         // GET: InterviewQuestions/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var question = await _context.InterviewQuestions.FirstOrDefaultAsync(iq => iq.Id == id);
+            //get the logged in user id
+            var loggedInUser = await GetCurrentUserAsync();
+
+            if (question.ApplicationUserId != loggedInUser.Id)
+            {
+                return NotFound();
+            }
+
+            return View(question);
         }
 
         // POST: InterviewQuestions/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, InterviewQuestion interviewQuestion)
         {
             try
             {
-                // TODO: Add delete logic here
+                _context.InterviewQuestions.Remove(interviewQuestion);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
