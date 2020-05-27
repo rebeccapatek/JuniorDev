@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Innterview Questions</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -26,18 +26,24 @@
     <tbody>
 @foreach (var ques in Model.InterviewQuestions ) {
         <tr>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => ques.Question)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => ques.Answer)
             </td>
-       
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=ques.Id}) |
-                @Html.ActionLink("Delete", "Delete", new { id=ques.Id})
-            </td>
+            @if (@ques.ApplicationUserId == @Model.LoggedInUser.Id)
+            {
+                <td>
+
+                    
+                    @Html.ActionLink("Edit", "Edit", new { id = ques.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = ques.Id })
+
+                    
+                </td>
+            }
         </tr>
 }
     </tbody>
