@@ -13,6 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DevPrep.Models;
+using IdentityServer4.EntityFramework.Entities;
+using Microsoft.AspNetCore.Authentication.Google;
+
 
 namespace DevPrep
 {
@@ -35,6 +38,14 @@ namespace DevPrep
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = Configuration["App:GoogleClientId"];
+                options.ClientSecret = Configuration["App:GoogleClientSecret"];
+            }
+
+            );
+        
 
         }
 
